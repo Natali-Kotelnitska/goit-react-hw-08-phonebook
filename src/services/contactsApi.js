@@ -1,19 +1,63 @@
-import axios from 'axios';
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_ENDPOINT = '/contacts';
+export const contactsApi = createApi({
+  reducerPath: 'contacts',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ['Contact'],
+  endpoints: buider => ({
+    getContacts: buider.query({
+      query: () => '/contacts',
+      keepUnusedDataFor: 1,
+      providesTags: ['Contact'],
+    }),
+    addContact: buider.mutation({
+      query: data => ({
+        url: '/contacts',
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+    deleteContact: buider.mutation({
+      query: id => ({
+        url: `/contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+  }),
+});
 
-export const getContacts = async () => {
-  const res = await axios.get(`${API_ENDPOINT}`);
-  return res.data ? res.data : Promise.reject(new Error());
-};
+export const {
+  useGetContactsQuery,
+  useDeleteContactMutation,
+  useAddContactMutation,
+} = contactsApi;
 
-export const addContact = async contact => {
-  const res = await axios.post(`${API_ENDPOINT}`, contact);
-  return res.data ? res.data : Promise.reject(new Error());
-};
+// import axios from 'axios';
 
-export const deleteContact = async id => {
-  const res = await axios.delete(`${API_ENDPOINT}/${id}`);
-  return res.data ? res.data : Promise.reject(new Error());
-};
+// const API_ENDPOINT = '/contacts';
+
+// export const getItems = async () => {
+//   const res = await axios.get(`${API_ENDPOINT}`);
+//   return res.data ? res.data : Promise.reject(new Error());
+// };
+
+// export const addItem = async contact => {
+//   const res = await axios.post(`${API_ENDPOINT}`, contact);
+//   return res.data ? res.data : Promise.reject(new Error());
+// };
+
+// export const deleteItem = async id => {
+//   const res = await axios.delete(`${API_ENDPOINT}/${id}`);
+//   return res.data ? res.data : Promise.reject(new Error());
+// };

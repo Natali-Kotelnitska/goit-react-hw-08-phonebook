@@ -1,39 +1,21 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authSelectors } from 'redux/auth';
-import s from './Navigation.module.css';
 
-const Navigation = () => {
+import styles from './Navigation.module.css';
+
+export default function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  return (
-    <nav>
-      <NavLink
-        to="/"
-        className={({ isActive }) => {
-          return isActive ? [s.button, s.active].join(' ') : s.button;
-        }}
-      >
-        Home
-      </NavLink>
-      {isLoggedIn && (
-        <>
-          <NavLink
-            to="/contacts"
-            exact
-            className={({ isActive }) => {
-              return isActive ? [s.button, s.active].join(' ') : s.button;
-            }}
-          >
-            Contacts
-          </NavLink>
-        </>
-      )}
 
-      {/* {isLoggedIn ? (
+  return (
+    <nav className={styles.nav}>
+      {isLoggedIn ? (
         <NavLink
           to="/contacts"
           className={({ isActive }) => {
-            return isActive ? [s.button, s.active].join(' ') : s.button;
+            return isActive
+              ? [styles.button, styles.active].join(' ')
+              : styles.button;
           }}
         >
           Contacts
@@ -42,14 +24,14 @@ const Navigation = () => {
         <NavLink
           to="/"
           className={({ isActive }) => {
-            return isActive ? [s.button, s.active].join(' ') : s.button;
+            return isActive
+              ? [styles.button, styles.active].join(' ')
+              : styles.button;
           }}
         >
           Home
         </NavLink>
-      )} */}
+      )}
     </nav>
   );
-};
-
-export default Navigation;
+}

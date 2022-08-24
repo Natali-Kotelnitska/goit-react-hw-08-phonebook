@@ -3,6 +3,17 @@
   align-items: center;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.text {
+  font-size: 16px;
+  margin: 0;
+}
+
 .button {
   display: flex;
   align-items: center;
@@ -11,6 +22,8 @@
   background-color: #4caf50;
   width: 100px;
   height: 32px;
+  margin-left: 10px;
+  padding: 5px;
   cursor: pointer;
   text-decoration: none;
   border: none;
@@ -22,11 +35,4 @@
 .button:hover,
 .button:focus {
   background-color: #56ca5c;
-}
-
-.active {
-  text-decoration: underline;
-  background-color: #4caf50;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }

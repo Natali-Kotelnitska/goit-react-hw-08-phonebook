@@ -1,4 +1,4 @@
-.nav {
+.auth {
   display: flex;
   align-items: center;
 }
@@ -11,6 +11,7 @@
   background-color: #4caf50;
   width: 100px;
   height: 32px;
+  margin-left: 10px;
   cursor: pointer;
   text-decoration: none;
   border: none;

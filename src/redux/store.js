@@ -11,26 +11,30 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import authReducer from './auth/authSlice';
-import contactsReducer from './contacts/contactsSlice';
-// import contactsReducer from './contacts/contactsReducer';
+import { contactsApi } from 'services/contactsApi';
+import { authReducer } from './auth';
+// import contactsReducer from './contacts/contactsSlice';
+import contactsReducer from './contacts/contactsReducer';
 // import filter from './contacts/contactsReducer';
 
-const contactsPersistConfig = {
-  key: 'contacts',
-  storage,
-  // blacklist: ['filter'],
-  whitelist: [],
-};
+// const contactsPersistConfig = {
+//   key: 'contacts',
+//   storage,
+//   // blacklist: ['filter'],
+//   whitelist: [],
+// };
 const authPersistConfig = {
   key: 'auth',
-  storage: storage,
+  storage,
   whitelist: ['token'],
   // blacklist: ['somethingTemporary'],
 };
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  contacts: persistReducer(contactsPersistConfig, contactsReducer),
+  // contacts: contactsReducer,
+  contactsReducer,
+  [contactsApi.reducerPath]: contactsApi.reducer,
+  // contacts: persistReducer(contactsPersistConfig, contactsReducer),
 });
 // //COMMENT configureStore (object {reducer(object or combineReducers()), middleware?, devTools?}), ...
 const store = configureStore({
@@ -38,12 +42,13 @@ const store = configureStore({
   // contacts: persistReducer(contactsPersistConfig, contactsReducer),
   reducer: rootReducer,
 
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(contactsApi.middleware);
+  },
   logger,
   devTools: process.env.NODE_ENV === 'development',
 });

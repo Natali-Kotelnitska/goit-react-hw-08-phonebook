@@ -1,4 +1,41 @@
-.contactForm {
+.FormInput {
+  padding: 20px;
+  max-width: 480px;
+}
+
+.FormInput__input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.FormInput__input:focus {
+  background-color: #e4ffe6;
+}
+
+.FormButton {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 8px 0px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color ease-in-out 300ms;
+}
+
+.FormButton:hover {
+  background-color: #56ca5c;
+}
+
+/* .contactForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,13 +64,13 @@
   font-size: 15px;
   font-weight: 600;
   /* border-color: rgba(18, 135, 255, 0.79); */
-  border-color: orange;
+/* border-color: orange;
   border-radius: 5px;
   /* box-shadow: inset 1px -1px 15px 1px rgba(18, 135, 255, 0.79); */
-  box-shadow: inset 1px -1px 15px 1px orange;
-}
+/* box-shadow: inset 1px -1px 15px 1px orange; */
+/* } */
 
-.formBtn:hover {
+/* .formBtn:hover {
   background-color: orangered;
   color: white;
-}
+} */

@@ -1,8 +1,23 @@
 .header {
+  min-width: 440px;
+  margin: 0 auto;
+  max-width: 1024px;
+  background-color: #f2f2f2;
+  padding: 20px 10px;
+}
+
+.nav {
+  display: flex;
+  max-width: 540px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 80px;
   margin-bottom: 16px;
   border-bottom: 1px solid #2a363b;
-}
+} */

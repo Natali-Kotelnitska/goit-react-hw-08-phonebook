@@ -1,4 +1,36 @@
-.contactsText {
+.ContactList__list {
+  padding: 20px 20px;
+  max-width: 480px;
+}
+
+.ContactList__item {
+  padding: 5px;
+  display: flex;
+  border-bottom: 1px solid #999;
+}
+
+.ContactList__text {
+  margin-right: auto;
+  line-height: 34px;
+}
+
+.ContactList__button {
+  width: 100px;
+  height: 32px;
+  color: white;
+  background-color: #4caf50;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color ease-in-out 300ms;
+}
+
+.ContactList__button:hover {
+  background-color: #56ca5c;
+}
+
+/* .contactsText {
   display: inline-block;
 }
 .contactsList {
@@ -28,4 +60,4 @@
 .contactsBtn:hover {
   background-color: orangered;
   color: white;
-}
+} */
