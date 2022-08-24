@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCurrentUser, logIn, logOut, register } from './authOperations';
+import authOperations from './authOperations';
+// import { fetchCurrentUser, logIn, logOut, register } from './authOperations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -12,30 +13,30 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [register.fulfilled](state, action) {
+    [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
-    [logIn.fulfilled](state, action) {
+    [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
-    [logOut.fulfilled](state) {
+    [authOperations.logOut.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
     },
-    [fetchCurrentUser.pending](state) {
+    [authOperations.fetchCurrentUser.pending](state) {
       state.isFetchingCurrentUser = true;
     },
-    [fetchCurrentUser.fulfilled](state, action) {
+    [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
     },
-    [fetchCurrentUser.rejected](state) {
+    [authOperations.fetchCurrentUser.rejected](state) {
       state.isFetchingCurrentUser = false;
     },
   },

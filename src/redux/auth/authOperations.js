@@ -67,4 +67,11 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-export { register, logIn, logOut, fetchCurrentUser }; // authOperations (index.js)
+const authOperations = {
+  register,
+  logIn,
+  logOut,
+  fetchCurrentUser,
+};
+
+export default authOperations;

@@ -2,8 +2,7 @@ import { useSelector } from 'react-redux';
 import { getFilter } from 'redux/contacts/contactsSelectors';
 import { useGetContactsQuery } from 'services/contactsApi';
 import ContactListItem from './ContactListItem';
-
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 import PropTypes from 'prop-types';
 import style from './ContactList.module.css';
 

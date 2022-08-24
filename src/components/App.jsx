@@ -14,10 +14,12 @@ const ContactsView = lazy(() => import('views/ContactsView'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(authSelectors.getLoadingUser);
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.isFetchingCurrentUser
+  );
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (

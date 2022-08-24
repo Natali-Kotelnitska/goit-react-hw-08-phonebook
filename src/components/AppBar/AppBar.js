@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-import AuthNav from 'components/AuthForm';
+import AuthForm from 'components/AuthForm';
 import Navigation from 'components/Navigation';
 import UserMenu from 'components/UserMenu';
 
@@ -13,7 +13,7 @@ export default function AppBar() {
     <header className={styles.header}>
       <div className={styles.nav}>
         <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        {isLoggedIn ? <UserMenu /> : <AuthForm />}
       </div>
     </header>
   );
