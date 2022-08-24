@@ -20,30 +20,3 @@ export default function HomeView() {
     </>
   );
 }
-
-// import PageHeading from 'components/PageHeading/PageHeading';
-
-// const HomeView = () => {
-//   return (
-//     <div>
-//       <PageHeading text={'Welcome to PhoneBook Service!'} />
-//       <span role="img" aria-label="welcome icon">
-//         🙋
-//       </span>
-//     </div>
-//   );
-// };
-
-// const styles = {
-//   container: {
-//     minHeight: 'calc(100vh - 50px)',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   title: {
-//     fontWeight: 500,
-//     fontSize: 48,
-//     textAlign: 'center',
-//   },
-// };

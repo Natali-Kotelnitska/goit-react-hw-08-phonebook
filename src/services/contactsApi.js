@@ -42,22 +42,3 @@ export const {
   useDeleteContactMutation,
   useAddContactMutation,
 } = contactsApi;
-
-// import axios from 'axios';
-
-// const API_ENDPOINT = '/contacts';
-
-// export const getItems = async () => {
-//   const res = await axios.get(`${API_ENDPOINT}`);
-//   return res.data ? res.data : Promise.reject(new Error());
-// };
-
-// export const addItem = async contact => {
-//   const res = await axios.post(`${API_ENDPOINT}`, contact);
-//   return res.data ? res.data : Promise.reject(new Error());
-// };
-
-// export const deleteItem = async id => {
-//   const res = await axios.delete(`${API_ENDPOINT}/${id}`);
-//   return res.data ? res.data : Promise.reject(new Error());
-// };
